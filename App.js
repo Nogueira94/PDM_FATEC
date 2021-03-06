@@ -1,12 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
+  const [numero, setNumero] = useState('1');
+  const [numeros, setNumeros] = useState([]);
+  var numero_aleatorio = 0;
+
+  const adicionarNumero = () => {
+    setNumero(numeros => [numero, ...numeros]);
+  }
+
+  const geraNumeroAleatorio = () => {
+    numero_aleatorio = Math.floor(Math.random() * 60);
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Blank Project</Text>
-      <StatusBar style="auto" />
+    <View>
+      <View style={{padding: 40}}>
+        <Text>{numero_aleatorio}</Text>
+        <Button 
+          title="Gerar numero"
+          onPress={geraNumeroAleatorio}
+        />
+      </View>
+      <View>
+        {
+        numeros.map((numero) => <Text>{numero_aleatorio}</Text>)
+        }
+      </View>
     </View>
   );
 }
