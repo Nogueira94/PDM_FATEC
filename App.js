@@ -6,7 +6,7 @@ export default function App() {
   const [numeros, setNumeros] = useState([]);
   var numero_aleatorio = 0;
 
-  const adicionarNumero = () => {
+  const adicionarNumero = () => { 
     setNumero(numeros => [numero, ...numeros]);
   }
 
