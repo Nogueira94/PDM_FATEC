@@ -7,7 +7,7 @@ export default function App() {
   const [cidade, setCidade] = useState('');
   const [weather, setWeather] = useState([]);
 
-  const consomeApi = () => {
+  const getData = () => {
     const target = endPoint + cidade + "&appid=" + apiKey;
     fetch(target)
     .then((dados) => {
@@ -37,10 +37,6 @@ export default function App() {
     setCidade(cidade);
   }
 
-
-  const vaiJa = (previsoes) => {
-    setOi(previsoes);
-  }
   const endPoint = "https://api.openweathermap.org/data/2.5/forecast?lang=pt&units=metric&q=";
   const apiLink = "https://api.openweathermap.org/data/2.5/onecall?lat=";
   const apiKey = '7dcb6e5f7579133b1c8455cd6ef65ee3';
@@ -56,7 +52,7 @@ export default function App() {
         />
         <Button
           title="Ok"
-          onPress={consomeApi}
+          onPress={getData}
         />        
       </View>
       
@@ -71,23 +67,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 40,
-    flexDirection: 'column',
+    padding: 60,
+    flexDirection: "column",
     flex: 1,
-    //backgroundColor: '#fff'
+    backgroundColor: "white"
   },
   nomeCidade: {
-    padding: 10,
-    borderBottomColor: '#BB96F3',
+    padding: 12,
+    borderBottomColor: "#BB96F3",
     borderBottomWidth: 2,
-    textAlign: 'left',
-    flexGrow: 0.9
+    textAlign: "center",
+    marginBottom: 8
   },
   entrada: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginBottom: 8
+    marginBottom: 12
   }
 });
   

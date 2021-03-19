@@ -18,12 +18,12 @@ const PrevisaoItem = (props) => {
                   />
                   <View>
                       <View style={estilos.primeiraLinha}>
-                          <Text>{new Date(props.previsao.dt * 1000).toLocaleTimeString()} - Sensação Térmica: {parseFloat((props.previsao.feels_like-273).toFixed(2)) + "\u00B0"}</Text>
+                          <Text>Fells Like: {parseFloat((props.previsao.feels_like-273).toFixed(2)) + "\u00B0"}</Text>
                       </View>
 
                       <View style={estilos.segundaLinha}>
-                          <Text style={estilos.valor}>Nascer do Sol: {new Date(props.previsao.sunrise * 1000).toLocaleTimeString()}</Text>
-                          <Text style={estilos.valor}>Pôr do Sol: {new Date(props.previsao.sunset * 1000).toLocaleTimeString()}</Text>
+                          <Text style={estilos.valor}>Sunrise: {new Date(props.previsao.sunrise * 1000).toLocaleTimeString()}</Text>
+                          <Text style={estilos.valor}>Sunset: {new Date(props.previsao.sunset * 1000).toLocaleTimeString()}</Text>
                       </View>
 
                   </View>
@@ -35,36 +35,35 @@ const PrevisaoItem = (props) => {
   }
 }
 
-const estilos = StyleSheet.create ({
-    primeiraLinha: {
-      justifyContent: 'center',
-      flexDirection: 'row'
-    },
-    segundaLinha: {
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      marginTop: 4,
-      borderTopWidth: 1,
-      borderTopColor: '#DDD'
-    }, 
-    cartao: {
-      marginBottom: 8,
-      backgroundColor: '#FF5E13'
-    },
-    tela: {
-      marginTop: 12,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    imagem: {
-      width: 50,
-      height: 50
-    },
-    valor: {
-      marginHorizontal: 2
-    }
-  });
+const estilos = StyleSheet.create({
+  cartao: {
+    marginBottom: 8
+  },
+  tela: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-evenly'
+  },
+  primeiraLinha: {
+    marginTop: 7,
+    justifyContent: 'center',
+    flexDirection: 'row'
+  },
+  segundaLinha: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 4,
+    borderTopWidth: 1,
+    borderTopColor: '#DDD'
+  },
+  imagem: {
+    width: 50,
+    height: 50
+  },
+  valor: {
+    marginHorizontal: 2
+  }
+});
 
 export default PrevisaoItem;
