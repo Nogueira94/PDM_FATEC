@@ -16,33 +16,30 @@ import PrevisaoItem from './components/PrevisaoItem';
 
 export default function App() {
   const [cidade, setCidade] = useState("");
-  const [latitute, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
   const [dados, setDados] = useState("");
   const capturarCidade = (cidade) => {
     setCidade(cidade);
   }
-  const obterLatandLong = () => {
+  const obterDados = () => {
     setDados("");
-    setLatitude("");
-    setLongitude("");
+    // setLatitude("");
+    // setLongitude("");
     const target =  `${endPoint}${cidade}&appid=${apiKey}`;
     fetch(target)
     .then((data) => data.json())
     .then((data) => {
-      setLatitude(data.city.coord.lat)
-      setLongitude(data.city.coord.lon)
+      obterSun(data["city"].coord)
     }).then(
       obterSun
     );
     
   }
-  const obterSun = () => {
-    const target = `${endPointSun}lat=${latitute}&lon=${longitude}&appid=${apiKey}`
+  const obterSun = (coords) => {
+    const target = `${endPointSun}lat=${coords.lat}&lon=${coords.lat}&appid=${apiKey}`
     fetch(target)
     .then((data) => data.json())
     .then((data) => {
-      setDados(data.current)
+      setDados(data["current"])
     });
   }
   const endPoint = `https://api.openweathermap.org/data/2.5/forecast?lang=pt_br&units=metric&q=`;
@@ -59,22 +56,22 @@ export default function App() {
         />
         <Button 
           title="OK"
-          onPress={obterLatandLong}
-        /> 
-        <Button 
-          title="OK2"
-          onPress={obterSun}
-        /> 
+          onPress={obterDados}
+        />  
       </View>
      
-      <FlatList 
+     <PrevisaoItem
+          tempo={dados}
+     />
+
+      {/* <FlatList 
         data={dados}
         renderItem={          
           data =>(
             <PrevisaoItem data={data} />
           )
         }
-      />
+      /> */}
     </View>
   );
 }

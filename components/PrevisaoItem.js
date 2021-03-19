@@ -12,20 +12,20 @@ const PrevisaoItem = (props) => {
   return (
     <Cartao estilos={styles.cartao}>
       <View style={styles.tela}>
-        <Image 
+        {/* <Image 
           style={styles.imagem}
-          source={{ uri: `https://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`}}
-        />
+          source={{ uri: `https://openweathermap.org/img/wn/${props.dados.weather[0].icon}.png`}}
+        /> */}
         <View>
           <View style={styles.segundaLinha}>
             <Text style={styles.valor}>
-              {`Sunrise: ${props.data.sunrise}`}
+              {/* {`Sunrise: ${new Date(props.dados.sunrise * 1000).toLocaleTimeString()}`} */}
             </Text>
             <Text style={styles.valor}>
-              {`Sunset: ${props.data.sunset}`}
+              {/* {`Sunset: ${new Date(props.dados.sunrise * 1000).toLocaleTimeString()}`} */}
             </Text>
             <Text style={styles.valor}>
-              {`Feels Like: ${props.data.feels_like}`}
+              {/* {`Feels Like: ${props.data.feels_like}`} */}
             </Text>
           </View>
         </View>
